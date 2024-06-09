@@ -1,0 +1,43 @@
+
+<section class="results">
+  <app-header></app-header>
+        <app-empresa-create></app-empresa-create>
+      <br>
+      <h3>Buscar Empresa</h3>
+    <div class="row">
+    <div class="col-offset-4 col-mb-4 col-lg-4">
+    <div class="form-group">
+    <input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Empresa" #filter>
+    <button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+    </div>
+</div>
+</div>
+    <table class="table">
+        <!-- Encabezados de la tabla -->
+        <thead>
+          <tr>
+            <th>Código Empresa</th>
+            <th>Nit</th>
+            <th>Nombre Empresa</th>
+            <th>Representante</th>
+            <th>Email</th>
+            <!-- Agregar más encabezados según sea necesario -->
+          </tr>
+          
+        </thead>
+        <tbody>
+            <tr *ngFor="let empresa of filteredEmpresaList" >
+                <td class="listing-empresa">{{ empresa.codigo }}</td>
+                <td class="listing-location">{{ empresa.nit }}</td>
+                <td class="listing-location">{{ empresa.nombre }}</td>
+                <td class="listing-location">{{ empresa.representante }}</td>
+                <td class="listing-location">{{ empresa.email }}</td>
+                <td>
+                <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, empresa)" #d="ngForm">
+                    <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+                </form>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

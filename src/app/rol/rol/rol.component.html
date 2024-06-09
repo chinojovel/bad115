@@ -1,0 +1,38 @@
+
+<section class="results">
+      <app-header></app-header>
+    <app-rol-create ></app-rol-create>
+  <br>
+  <h3>Buscar Rol</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Rol" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código Rol</th>
+        <th>Nombre Rol</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let rol of filteredRolList" >
+            <td class="listing-rol">{{ rol.codigo }}</td>
+            <td class="listing-location">{{ rol.nombre }}</td>
+            <td>
+            <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, rol)" #d="ngForm">
+                <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

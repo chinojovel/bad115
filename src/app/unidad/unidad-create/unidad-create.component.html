@@ -1,0 +1,25 @@
+<section>
+    <h1>Agregar Unidad</h1>
+    <div class="col-md-4">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        
+    <div class="form-group">
+        <label>Nombre
+        </label>
+        <input class="form-control" 
+        name="nombre"
+        id="nombre" 
+        type="text"
+        ngModel
+        >
+    </div>
+    <label>Empresa
+    </label>
+    <select id="codEmpresa" class="form-control" name="codEmpresa" ngModel>
+        <option *ngFor="let empresa of empresaList" [value]="empresa.codigo">{{ empresa.nombre }}</option>
+    </select>
+<br>
+    <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</div>
+</section>

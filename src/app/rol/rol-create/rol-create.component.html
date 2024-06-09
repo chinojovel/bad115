@@ -1,0 +1,18 @@
+<section>
+    <h1>Agregar Rol</h1>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+    <div class="form-group col-mb-4">
+        <label>Nombre
+        </label>
+        <input class="form-control" 
+        name="nombre"
+        id="nombre" 
+        type="text"
+        ngModel
+        >
+    </div>
+    <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</section>

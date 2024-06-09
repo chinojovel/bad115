@@ -1,0 +1,45 @@
+
+<section class="results">
+  <app-header></app-header>
+    <app-centro-create ></app-centro-create>
+  <br>
+  <h3>Buscar Centro</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Centro" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código Centro</th>
+        
+        <th>Nombre Departamento</th>
+        <th>Fecha Asignacion</th>
+        <th>Monto Inicial</th>
+        <th>Monto Actual</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let centro of filteredCentroList" >
+            <td class="listing-centro">{{ centro.codigo }}</td>
+            <td class="listing-location">{{ centro.nombreDpto }}</td>
+            <td class="listing-location">{{ centro.fechaAsignacion }}</td>
+            <td class="listing-location">{{ centro.montoInicial }}</td>
+            <td class="listing-location">{{ centro.montoActual }}</td>
+            <td>
+            <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, centro)" #d="ngForm">
+                <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

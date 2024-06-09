@@ -1,0 +1,38 @@
+
+<section class="results">
+  <app-header></app-header>
+    <app-profesion-create ></app-profesion-create>
+  <br>
+  <h3>Buscar Profesion</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-contprofesion" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Profesion" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código Profesion</th>
+        <th>Nombre Profesion</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let profesion of filteredProfesionList" >
+            <td class="listing-profesion">{{ profesion.codigo }}</td>
+            <td class="listing-location">{{ profesion.nombre }}</td>
+            <td>
+            <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, profesion)" #d="ngForm">
+                <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

@@ -1,0 +1,46 @@
+
+<section class="results">
+  <app-header></app-header>
+    <app-puesto-create ></app-puesto-create>
+  <br>
+  <h3>Buscar Puesto</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Puesto" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre Puesto</th>
+        <th>Sub Unidad</th>
+        <th>Descripcion</th>
+        <th>Salario Minimo</th>
+        <th>Salario Maximo</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let puesto of filteredPuestoList" >
+            <td class="listing-puesto">{{ puesto.codigo }}</td>
+            <td class="listing-location">{{ puesto.nombre }}</td>
+            <td class="listing-location">{{ puesto.nombreSubUnidad }}</td>
+            <td class="listing-location">{{ puesto.descripcion }}</td>
+            <td class="listing-location">{{ puesto.salarioMin }}</td>
+            <td class="listing-location">{{ puesto.salarioMax }}</td>
+            <td>
+            <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, puesto)" #d="ngForm">
+                <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

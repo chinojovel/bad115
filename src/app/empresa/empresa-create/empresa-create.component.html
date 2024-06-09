@@ -1,0 +1,98 @@
+<section>
+    <h1>Agregar Empresa</h1>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+    <div class="form-group col-mb-4" >
+        <label for="name">Nit</label>
+        <input class="form-control" 
+        name="nit"
+        id="nit" 
+        type="text"
+        ngModel
+        >
+    </div>
+    <div class="form-group col-mb-4">
+        <label>Nombre
+        </label>
+        <input class="form-control" 
+        name="nombre"
+        id="nombre" 
+        type="text"
+        ngModel
+        >
+    </div>
+    <div class="form-group">
+        <label>Representante
+        </label>
+        <input class="form-control"
+        name="representante"
+        id="representante" 
+        type="text"
+        ngModel
+        >
+    
+    </div>
+    <div class="form-group">
+        <label>Municipio
+        </label>
+        <select name="codMunicipio" class="form-control" ngModel>
+            <option value=3>San Salvador</option>
+            <option value=4>Santa Tecla</option>
+            <option value=5>Santa Ana</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Direccion
+        </label>
+        <input class="form-control"
+        name="direccion"
+        id="direccion" 
+        type="text"
+        ngModel
+        >
+    </div>
+    
+    <div class="form-group">
+        <label>Telefono
+        </label>
+        <input class="form-control"
+        name="telefono"
+        id="telefono" 
+        type="text"
+        ngModel
+        >
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <label>Pagina Web
+        </label>
+        <input class="form-control"
+        name="paginaWeb"
+        id="paginaWeb" 
+        type="text"
+        ngModel
+        >
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control"
+        type="email" 
+        name="email"
+        ngModel
+        id="email">
+    </div>
+    <div class="form-group">
+        <label>Planilla Mensual</label>
+        <select id="planillaMensual" class="form-control" name="planillaMensual" ngModel>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+</div>    
+<div class="row">
+    <button type="submit" class="btn btn-success">Agregar</button>
+</div>
+</form>
+</section>

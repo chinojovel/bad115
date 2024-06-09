@@ -1,0 +1,61 @@
+<section>
+    <h1>Agregar Puesto</h1>
+    <div class="col-md-4">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        
+     <div class="form-group">
+        <label>Nombre
+        </label>
+        <input class="form-control" 
+        name="nombre"
+        id="nombre" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group">
+        <label>Descripcion
+        </label>
+        <input class="form-control" 
+        name="descripcion"
+        id="descripcion" 
+        type="text"
+        ngModel
+        >
+     </div>
+     
+     <div class="form-group">
+        <label>Salario Minimo
+        </label>
+        <input class="form-control" 
+        name="salarioMin"
+        id="salarioMin" 
+        type="number"
+        ngModel
+        >
+     </div>
+     
+     <div class="form-group">
+        <label>Salario Maximo
+        </label>
+        <input class="form-control" 
+        name="salarioMax"
+        id="salarioMax" 
+        type="number"
+        ngModel
+        >
+     </div>
+     <label>Empresa</label>
+     <select id="codEmpresa" class="form-control" name="codEmpresa" ngModel>
+         <option *ngFor="let empresa of empresaList" [value]="empresa.codigo">{{ empresa.nombre }}</option>
+     </select>
+        <label>Sub Unidad</label>
+    <select id="codSubunidad" class="form-control" name="codSubunidad" ngModel>
+        <option *ngFor="let subunidad of subunidadList" [value]="subunidad.codigo">{{ subunidad.nombre }}</option>
+    </select>
+<br>
+
+    <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</div>
+</section>

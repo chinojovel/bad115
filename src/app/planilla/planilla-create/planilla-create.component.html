@@ -1,0 +1,106 @@
+<section>
+    <h1>Agregar Planilla</h1>
+
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="row">
+
+    <div class="form-group col-md-4">
+        <label for="fecha">Fecha Planilla</label>
+<input class="form-control"
+       name="fecha"
+       id="fecha"
+       type="date"
+       [(ngModel)]="fecha"
+       required
+       [min]="'1995-01-01'">
+        <div *ngIf="form && form.controls['fecha'] && form.controls['fecha'].invalid && (form.controls['fecha'].dirty || form.controls['fecha'].touched)" class="error-message">
+            <div *ngIf="form.controls['fecha'].errors">
+              La fecha es obligatoria.
+            </div>
+            <div *ngIf="form.controls['fecha'].errors">
+              La fecha no puede ser anterior a 1990.
+            </div>
+          </div>
+    </div>
+
+    <div class="form-group col-md-4">    
+        <label>Empresa</label>
+        <select id="codEmpresa" class="form-control" name="codEmpresa" ngModel>
+            <option *ngFor="let empresa of empresaList" [value]="empresa.codigo">{{empresa.nombre }}</option>
+        </select>
+         </div>  
+         <div class="form-group col-md-4">    
+            <label>Empleado</label>
+            <select id="codEmpleado" class="form-control" name="codEmpleado" ngModel>
+                <option *ngFor="let puesto of empleadoList" [value]="puesto.codigo">{{puesto.primerNombre }}</option>
+            </select>
+        </div>    
+    </div>
+    <div class="row">
+<!-- Horas Extras Diurnas -->
+<div class="form-group col-md-4">
+    <label for="horasExtrasDiurnas">Horas Extras Diurnas</label>
+    <input class="form-control" 
+           name="horasExtrasDiurnas"
+           id="horasExtrasDiurnas" 
+           type="number"
+           min="0"
+           max="48"
+           ngModel
+           >
+    <!-- Validación para valores negativos -->
+    <div *ngIf="form && form.controls['horasExtrasDiurnas'] && form.controls['horasExtrasDiurnas'].value < 0" class="error-message">
+        Las horas extras diurnas no pueden ser menores que 0.
+    </div>
+    <!-- Validación para valores mayores que 48 -->
+    <div *ngIf="form && form.controls['horasExtrasDiurnas'] && form.controls['horasExtrasDiurnas'].value > 48" class="error-message">
+        Las horas extras diurnas no pueden ser mayores que 48.
+    </div>
+</div>
+
+<!-- Horas Extras Nocturnas -->
+<div class="form-group col-md-4">
+    <label for="horasExtrasNocturnas">Horas Extras Nocturnas</label>
+    <input class="form-control" 
+           name="horasExtrasNocturnas"
+           id="horasExtrasNocturnas" 
+           type="number"
+           min="0"
+           max="48"
+           ngModel
+           >
+    <!-- Validación para valores negativos -->
+    <div *ngIf="form && form.controls['horasExtrasNocturnas'] && form.controls['horasExtrasNocturnas'].value < 0" class="error-message">
+        Las horas extras nocturnas no pueden ser menores que 0.
+    </div>
+    <!-- Validación para valores mayores que 48 -->
+    <div *ngIf="form && form.controls['horasExtrasNocturnas'] && form.controls['horasExtrasNocturnas'].value > 48" class="error-message">
+        Las horas extras nocturnas no pueden ser mayores que 48.
+    </div>
+</div>
+
+<!-- Horas Nocturnas -->
+<div class="form-group col-md-4">
+    <label for="horasNocturnas">Horas Nocturnas</label>
+    <input class="form-control" 
+           name="horasNocturnas"
+           id="horasNocturnas" 
+           type="number"
+           min="0"
+           max="48"
+           ngModel
+           required>
+    <!-- Validación para valores negativos -->
+    <div *ngIf="form && form.controls['horasNocturnas'] && form.controls['horasNocturnas'].value < 0" class="error-message">
+        Las horas nocturnas no pueden ser menores que 0.
+    </div>
+    <!-- Validación para valores mayores que 48 -->
+    <div *ngIf="form && form.controls['horasNocturnas'] && form.controls['horasNocturnas'].value > 48" class="error-message">
+        Las horas nocturnas no pueden ser mayores que 48.
+    </div>
+</div>
+
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">Agregar</button>
+</form>
+</section>

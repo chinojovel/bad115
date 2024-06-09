@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import {Component} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {RouterOutlet, RouterLinkActive, RouterLink} from '@angular/router';
+import { NavigationDrawerComponent  } from './navigation-drawer/navigation-drawer.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule,RouterOutlet, RouterLink, RouterLinkActive, NavigationDrawerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'bad115';
+ 
 }

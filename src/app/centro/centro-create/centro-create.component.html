@@ -1,0 +1,71 @@
+<section>
+    <h1>Agregar Centro de Costos</h1>
+    <div class="col-md-4">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+        
+        
+        <div class="form-group">
+            <label for="fechaAsignacion">Fecha Asignación:</label>
+    <input class="form-control"
+           name="fechaAsignacion"
+           id="fechaAsignacion"
+           type="date"
+           [(ngModel)]="fechaAsignacion"
+           required
+           [min]="'1990-01-01'">
+            <div *ngIf="form && form.controls['fechaAsignacion'] && form.controls['fechaAsignacion'].invalid && (form.controls['fechaAsignacion'].dirty || form.controls['fechaAsignacion'].touched)" class="error-message">
+                <div *ngIf="form.controls['fechaAsignacion'].errors">
+                  La fecha de asignación es obligatoria.
+                </div>
+                <div *ngIf="form.controls['fechaAsignacion'].errors">
+                  La fecha de asignación no puede ser anterior a 1990.
+                </div>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="montoInicial">Monto Inicial:</label>
+            <input class="form-control"
+                   name="montoInicial"
+                   id="montoInicial"
+                   type="number"
+                   [(ngModel)]="montoInicial"
+                   required
+                   min="1">
+                   <div *ngIf="form && form.controls['montoInicial'] && form.controls['montoInicial'].invalid && (form.controls['montoInicial'].dirty || form.controls['montoInicial'].touched)" class="error-message">
+                    <div *ngIf="form.controls['montoInicial'].errors">
+                      El monto actual es obligatorio.
+                    </div>
+                    <div *ngIf="form.controls['montoInicial'].errors">
+                      El monto actual no puede ser 0 o menor.
+                    </div>
+                  </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="montoActual">Monto Actual:</label>
+            <input class="form-control"
+                   name="montoActual"
+                   id="montoActual"
+                   type="number"
+                   [(ngModel)]="montoActual"
+                   required
+                   min="1">
+                   <div *ngIf="form && form.controls['montoActual'] && form.controls['montoActual'].invalid && (form.controls['montoActual'].dirty || form.controls['montoActual'].touched)" class="error-message">
+                    <div *ngIf="form.controls['montoActual'].errors">
+                      El monto actual es obligatorio.
+                    </div>
+                    <div *ngIf="form.controls['montoActual'].errors">
+                      El monto actual no puede ser 0 o menor.
+                    </div>
+                  </div>
+        </div>
+        <label>Departamento</label>
+    <select id="codDpto" class="form-control" name="codDpto" ngModel>
+        <option *ngFor="let unidad of unidadList" [value]="unidad.codigo">{{ unidad.nombre }}</option>
+    </select>
+    <br>
+
+    <button type="submit" class="btn btn-success"[disabled]="form.invalid">Agregar</button>
+</form>
+</div>
+</section>

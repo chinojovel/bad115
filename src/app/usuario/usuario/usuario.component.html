@@ -1,0 +1,44 @@
+
+<section class="results">
+  <app-header></app-header>
+    <app-usuario-create ></app-usuario-create>
+  <br>
+  <h3>Buscar Usuario</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Usuario" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código Usuario</th>
+        <th>Correo Usuario</th>
+        <th>Codigo Empleado</th>
+        <th>Nombre Empleado</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of filteredUsuarioList" >
+            <td class="listing-usuario">{{ usuario.codigo }}</td>
+            <td class="listing-usuario">{{ usuario.correo }}</td>
+            <td class="listing-usuario">{{ usuario.codEmpleado }}</td>
+            <td class="listing-location">{{ usuario.nombreEmpleado }}</td>
+            <td class="listing-location">{{ usuario.nombreRol }}</td>
+            <td>
+            <button class="btn btn-warning btn-3" type="submit">Editar</button><form (ngSubmit)="onSubmitDelete(d, usuario)" #d="ngForm">
+                <button class="btn btn-danger btn-3" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

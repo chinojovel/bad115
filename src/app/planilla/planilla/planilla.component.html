@@ -1,0 +1,92 @@
+
+<section class="results">
+  <app-header></app-header>
+  <div *ngIf="mostrarDiv" id="desaprecer">
+    <app-planilla-create></app-planilla-create>
+  </div>
+  <br>
+  <!-- Mostrar el formulario oculto -->
+<form *ngIf="showForm" (ngSubmit)="submitHiddenForm(e)" #e="ngForm">
+  <h1>Editar Formulario</h1>
+  <div class="row">
+
+        <input type="hidden" id="fecha" name="fecha" class="form-control" [(ngModel)]="formData.fecha">
+        
+
+    
+    <input type="hidden" id="codigo" name="codigo" [(ngModel)]="formData.codigo">    
+  <input type="hidden" id="codEmpresa" name="codEmpresa" [(ngModel)]="formData.codEmpresa">
+  
+  <input type="hidden" id="codEmpleado" name="codEmpleado" [(ngModel)]="formData.codEmpleado">
+  <div class="form-group col-md-4" >
+  <label for="horasExtrasDiurnas">Horas Extras Diurnas</label>
+  <input type="number" id="horasExtrasDiurnas" class="form-control" name="horasExtrasDiurnas" [(ngModel)]="formData.horasExtrasDiurnas">
+</div>
+<div class="form-group col-md-4" >
+  <label for="fecha">Horas Extras Nocturnas</label>
+  <input type="number" id="horasExtrasNocturnas" class="form-control" name="horasExtrasNocturnas" [(ngModel)]="formData.horasExtrasNocturnas">
+</div>
+
+
+<div class="form-group col-md-4" >
+  <label for="fecha">Horas Nocturnas</label>
+  <input type="number" id="horasNocturnas" class="form-control" name="horasNocturnas" [(ngModel)]="formData.horasNocturnas">
+</div>
+</div>
+  <!-- Otros campos según los datos recibidos del otro formulario -->
+
+  <!-- Botón para enviar el formulario oculto -->
+  <button type="submit" class="btn btn-warning">Editar</button>
+</form>
+
+  <h3>Buscar Planilla</h3>
+<div class="row">
+<div class="col-offset-4 col-mb-4 col-lg-4">
+<div class="form-group">
+<input class="form-control" type="text" style="display: inline-block;" placeholder="Filtrar por nombre de Empleado" #filter>
+<button class="btn btn-primary" type="button"style="display: inline-block;" (click)="filterResults(filter.value)">Buscar</button>
+</div>
+</div>
+</div>
+
+<table class="table">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr>
+        <th>Código Planilla</th>
+        <th>Fecha</th>
+        <th>Horas Nocturnas</th>
+        <th>Horas Extras Diurnas</th>
+        <th>Horas Extras Nocturnas</th>
+        <th>Nombre Empleado</th>
+        <th>Monto Empleado</th>
+        <th>Monto Gravado Cotizable</th>
+        <th>Monto Planilla Unica</th>
+        <th>Acciones</th>
+        <!-- Agregar más encabezados según sea necesario -->
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let planilla of filteredPlanillaList" >
+            <td class="listing-planilla">{{ planilla.codigo }}</td>
+            <td class="listing-location">{{ planilla.fecha }}</td>
+            <td class="listing-location">{{ planilla.horasNocturnas }}</td>
+            <td class="listing-location">{{ planilla.horasExtrasDiurnas }}</td>
+            <td class="listing-location">{{ planilla.horasExtrasNocturnas }}</td>
+            <td class="listing-location">{{ planilla.nombreEmpleado }}</td>
+            <td class="listing-location">{{ planilla.montoEmpleado }}</td>
+            <td class="listing-location">{{ planilla.montoGravadoCotizable }}</td>
+            <td class="listing-location">{{ planilla.montoPlanillaUnica }}</td>
+            <td>
+            <form (ngSubmit)="onSubmitEdit(d, planilla)" #d="ngForm">
+              <button class="btn btn-warning btn-3 d-line" type="submit">Editar</button>
+          </form>
+            <form (ngSubmit)="onSubmitDelete(d, planilla)" #d="ngForm">
+                <button class="btn btn-danger btn-3 d-line" type="submit">Eliminar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</section>

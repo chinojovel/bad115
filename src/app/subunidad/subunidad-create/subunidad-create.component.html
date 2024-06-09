@@ -1,0 +1,32 @@
+<section>
+    <h1>Agregar Sub Unidad</h1>
+    <div class="col-md-4">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        
+     <div class="form-group">
+        <label>Nombre
+        </label>
+        <input class="form-control" 
+        name="nombre"
+        id="nombre" 
+        type="text"
+        ngModel
+        >
+     </div>
+        <label>Area</label>
+    <select id="codArea" class="form-control" name="codArea" ngModel (ngModelChange)="onAreaChange($event)">
+        <option *ngFor="let area of areaList" [value]="area.codigo">{{ area.nombre }}</option>
+    </select>
+    <label>Subunidad Padre</label>
+    <select id="codUnidadPadre" class="form-control" name="codUnidadPadre" ngModel>
+        <option *ngFor="let subunidad of filteredSubunidadList" [value]="subunidad.codigo">{{ subunidad.nombre }}</option>
+    </select>
+    <label>Subunidad/es hijas</label>
+    <select id="subUnidades" class="form-control" name="subUnidades" ngModel>
+        <option *ngFor="let subunidad of filteredSubunidadList" [value]="subunidad.codigo">{{ subunidad.nombre }}</option>
+    </select>
+
+    <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</div>
+</section>

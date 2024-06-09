@@ -1,0 +1,27 @@
+<section>
+    <h1>Agregar Permiso</h1>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input class="form-control"
+                 name="nombre"
+                 id="nombre"
+                 type="text"
+                 [(ngModel)]="favoriteFramework"
+                 [pattern]="'^[a-zA-Z0-9]+$'"
+                 required>
+          <div *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched)" class="error-message">
+            <div *ngIf="form.controls['nombre'].errors">
+              El nombre es obligatorio.
+            </div>
+            <div *ngIf="form.controls['nombre'].errors">
+              El nombre solo puede contener letras y números.
+            </div>
+          </div>
+        </div>
+      
+        <button type="submit" class="btn btn-success" [disabled]="form.invalid">Agregar</button>
+      </form>
+      
+      
+</section>

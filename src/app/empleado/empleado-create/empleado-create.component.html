@@ -1,0 +1,200 @@
+<section>
+    <h1>Agregar Empleado</h1>
+    <div class="col-md-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+      <div class="form-group col-md-2">
+        <label>DUI
+        </label>
+        <input class="form-control" 
+        name="dui"
+        id="dui" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Primer Nombre
+        </label>
+        <input class="form-control" 
+        name="primerNombre"
+        id="primerNombre" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Segundo Nombre
+        </label>
+        <input class="form-control" 
+        name="segundoNombre"
+        id="segundoNombre" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Apellido Paterno
+        </label>
+        <input class="form-control" 
+        name="apellidoPaterno"
+        id="apellidoPaterno" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Apellido Materno
+        </label>
+        <input class="form-control" 
+        name="apellidoMaterno"
+        id="apellidoMaterno" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Apellido Casada
+        </label>
+        <input class="form-control" 
+        name="apellidoCasada"
+        id="apellidoCasada" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Fecha Nacimiento
+        </label>
+        <input class="form-control" 
+        name="fechaNacimiento"
+        id="fechaNacimiento" 
+        type="date"
+        ngModel
+        >
+    </div>
+     </div>
+     <div class="row">
+      <div class="form-group col-md-2">
+        
+    <label>Sexo</label>
+    <select id="codSexo" class="form-control" name="codSexo" ngModel>
+        <option *ngFor="let sexo of sexoList" [value]="sexo.codigo">{{ sexo.nombre }}</option>
+    </select>
+     </div>
+     <div class="form-group col-md-2">
+        
+        <label>Estado Civil</label>
+        <select id="codEstadoCivil" class="form-control" name="codEstadoCivil" ngModel>
+            <option *ngFor="let estado of estadoList" [value]="estado.codigo">{{ estado.nombre }}</option>
+        </select>
+         </div>     
+    
+         <div class="form-group col-md-2">
+        
+            <label>Municipio</label>
+            <select id="codMunicipio" class="form-control" name="codMunicipio" ngModel>
+                <option *ngFor="let municipio of municipioList" [value]="municipio.codigo">{{municipio.nombre }}</option>
+            </select>
+             </div>     
+        
+             <div class="form-group col-md-2">    
+                <label>Profesion/Oficio</label>
+                <select id="codProfesion" class="form-control" name="codProfesion" ngModel>
+                    <option *ngFor="let profesion of profesionList" [value]="profesion.codigo">{{profesion.nombre }}</option>
+                </select>
+                 </div>      
+                 <div class="form-group col-md-2">
+        <label>Pasaporte
+        </label>
+        <input class="form-control" 
+        name="pasaporte"
+        id="nit" 
+        type="text"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>NUP
+        </label>
+        <input class="form-control" 
+        name="nup"
+        id="nup" 
+        type="number"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>ISSS
+        </label>
+        <input class="form-control" 
+        name="isss"
+        id="isss" 
+        type="number"
+        ngModel
+        >
+     </div>
+     <div class="form-group col-md-2">
+        <label>Email
+        </label>
+        <input class="form-control" 
+        name="email"
+        id="email" 
+        type="text"
+        ngModel
+        >
+     </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-2">
+        <label>Fecha Ingreso
+        </label>
+        <input class="form-control" 
+        name="fechaIngreso"
+        id="fechaIngreso" 
+        type="date"
+        ngModel
+        >
+     </div>
+    
+     <div class="form-group col-md-2">
+        <label>Salario
+        </label>
+        <input class="form-control" 
+        name="salario"
+        id="salario" 
+        type="number"
+        ngModel
+        >
+     </div>
+    
+     <div class="form-group col-md-2">  
+        <label>Empresa</label>
+        <select id="codEmpresa" class="form-control" name="codEmpresa" ngModel>
+            <option *ngFor="let empresa of empresaList" [value]="empresa.codigo">{{empresa.nombre }}</option>
+        </select>
+         </div>      
+         <div class="form-group col-md-2">  
+            <label>Puesto</label>
+            <select id="codPuesto" class="form-control" name="codPuesto" ngModel>
+                <option *ngFor="let puesto of puestoList" [value]="puesto.codigo">{{puesto.nombre }}</option>
+            </select>
+        </div>      
+        <div class="form-group col-md-2">    
+                <label>Jefe</label>
+                <select id="codJefe" class="form-control" name="codJefe" ngModel>
+                    <option *ngFor="let empleado of empleadoList" [value]="empleado.codigo">{{empleado.primerNombre}}</option>
+                </select>
+        </div>      
+        <div class="form-group col-md-2">
+    <label>Subordinado</label>
+    <select id="empleados" class="form-control" name="empleados" ngModel>
+        <option *ngFor="let empleado of empleadoList" [value]="empleado.codigo">{{ empleado.primerNombre }}</option>
+    </select>
+</div>
+</div>
+<br>
+    <button type="submit" class="btn btn-success">Agregar</button>
+</form>
+</div>
+</section>
